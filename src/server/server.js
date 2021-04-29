@@ -30,7 +30,8 @@ const geoP = "&maxRows=1";
 const baseWeatherUrl = 'https://api.weatherbit.io/v2.0/current?';
 const apiK = '5a6a216b84a546b88c3ee16e59c33dd0';// hide later
 
-
+const basePixabayURL = "https://pixabay.com/api/";
+const apiPix = "20411781-12da6a01e91bbdaac4fb1f75f"; // hide later
 
 
 //Set up get/post routes
@@ -40,6 +41,8 @@ const apiK = '5a6a216b84a546b88c3ee16e59c33dd0';// hide later
 //app.get ("/", function getData(req,res) {
  //   res.send ('dist/index.html');
 //})
+
+
 let tripData = {};
 
 app.post ("/Client", postClientData) 
@@ -84,26 +87,55 @@ async function getData (req,res) {
 
  app.get ("/Weather", getWeather);
 
- function getWeather (req,res) {
+async function getWeather (req,res) {
      const lng = tripData.long;
      const lat = tripData.lat;
     console.log ('Getting Weather')
     const weatherURL = `${baseWeatherUrl}&lat=${lat}&lon=${lng}&key=${apiK}`;
     console.log(`This is URL for weather API: ${weatherURL}`);
-    fetch (weatherURL)
+    try {
+        const response = await fetch(weatherURL);
+        
+        if (!response.ok) {
+            console.log(`Error connecting to Weatherbit API. Response status ${response.status}`);
+            res.send(null);
+        }
+        const weatherbitData = await response.json();
+        tripData['icon'] = weatherbitData.data[0].weather.icon;
+        tripData['description'] = weatherbitData.data[0].weather.description;
+        tripData['temp'] = weatherbitData.data[0].temp;
+        res.send(weatherbitData);
+        console.log(weatherbitData);
+        // If failed connection to API, return null
+    } catch (error) {
+        console.log(`Error connecting to server: ${error}`);
+        res.send(null);
+    }    
+        
+
+    }
+
+
+app.get ("/Pictures", getPictures);
+async function getPictures(req,res){
+    console.log('GET pictures');
+    const picURL = `${basePixabayURL}?key=${apiPix}&q=${tripData.destination}&image_type=photo`;
+    console.log(`This is URL for pic API: ${picURL}`);
+    fetch(picURL)
     .then (res => res.json())
     .then (response => {
-       
-            const data = response.data;
-            tripData.temp = data.temp;
-            tripData.city = data.city_name;
-            tripData.clouds = data.clouds;
-            res.send(response);
-            console.log(response);
-        console.log ( tripData.city)
-    })}
+        const data = response.hits;
+        tripData.webformatURL = data[0].webformatURL;
+        console.log (tripData.webformatURL);
+        res.send (tripData.webformatURL);
 
+    })
 
+}
 
-
-
+app.get ("/Trip", getFullData)
+ 
+function getFullData(req,res) {
+    console.log (tripData);
+    res.send (tripData);
+}
