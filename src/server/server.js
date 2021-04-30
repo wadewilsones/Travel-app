@@ -27,7 +27,7 @@ const baseGeoUrl = 'http://api.geonames.org/searchJSON?';
 const username = 'wadewilso'; // hide later
 const geoP = "&maxRows=1";
 
-const baseWeatherUrl = 'https://api.weatherbit.io/v2.0/current?';
+
 const apiK = '5a6a216b84a546b88c3ee16e59c33dd0';// hide later
 
 const basePixabayURL = "https://pixabay.com/api/";
@@ -36,13 +36,11 @@ const apiPix = "20411781-12da6a01e91bbdaac4fb1f75f"; // hide later
 
 //Set up get/post routes
 
-
-
 //app.get ("/", function getData(req,res) {
  //   res.send ('dist/index.html');
 //})
 
-
+// Creation of a project's information holder
 let tripData = {};
 
 app.post ("/Client", postClientData) 
@@ -51,7 +49,8 @@ async function postClientData(req,res) {
     let newClientData = {
         destination: clientData.city,
         start: clientData.departure,
-        end: clientData.returnDate
+        end: clientData.returnDate,
+        tripDuration: clientData.tripDuration
     }
     tripData = newClientData;
     res.send(tripData);
@@ -84,9 +83,8 @@ async function getData (req,res) {
         })
 }
 
-
- app.get ("/Weather", getWeather);
-
+app.get ("/Weather", getWeather);
+const baseWeatherUrl = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 async function getWeather (req,res) {
      const lng = tripData.long;
      const lat = tripData.lat;
@@ -101,9 +99,11 @@ async function getWeather (req,res) {
             res.send(null);
         }
         const weatherbitData = await response.json();
+        tripData['datetime'] = weatherbitData.data[0].datetime;
         tripData['icon'] = weatherbitData.data[0].weather.icon;
         tripData['description'] = weatherbitData.data[0].weather.description;
-        tripData['temp'] = weatherbitData.data[0].temp;
+        tripData['tempcurrent'] = weatherbitData.data[0].temp;
+        tripData['tempPredicted'] = weatherbitData.data[15].temp;
         res.send(weatherbitData);
         console.log(weatherbitData);
         // If failed connection to API, return null
@@ -112,22 +112,20 @@ async function getWeather (req,res) {
         res.send(null);
     }    
         
-
     }
-
 
 app.get ("/Pictures", getPictures);
 async function getPictures(req,res){
     console.log('GET pictures');
-    const picURL = `${basePixabayURL}?key=${apiPix}&q=${tripData.destination}&image_type=photo`;
+    const picURL = `${basePixabayURL}?key=${apiPix}&q=${tripData.destination}&image_type=photo&orientation=horizontal`;
     console.log(`This is URL for pic API: ${picURL}`);
     fetch(picURL)
     .then (res => res.json())
     .then (response => {
         const data = response.hits;
-        tripData.webformatURL = data[0].webformatURL;
-        console.log (tripData.webformatURL);
-        res.send (tripData.webformatURL);
+        tripData.image = data[1].webformatURL;
+        console.log (tripData.image);
+        res.send (tripData);
 
     })
 
