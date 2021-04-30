@@ -1,7 +1,45 @@
 {
+  "name": "travel_app",
+  "version": "1.0.0",
+  "description": "Web app, which provides a weather forecast for a planning trip.",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wadewilsones/Travel-app.git"
+  },
+  "keywords": [
+    "travel"
+  ],
+  "author": "Ulada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wadewilsones/Travel-app.git"
+  },
+  "homepage": "https://github.com/wadewilsones/Travel-app.git",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "fetch": "^1.1.0",
+    "git": "^0.1.5",
+    "html-webpack-plugin": "^5.3.1",
+    "jest": "^26.6.3",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "cli": "^1.0.1",
+    "css-loader": "^5.2.4",
+    "node-sass": "^5.0.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
   }
 }
