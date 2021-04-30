@@ -13,10 +13,20 @@
 
     if (city != '' && departureDate != ''  && returnDate != '') 
     
-    {await postData("http://localhost:3100/Client", {
+    {
+          //Set up dates duration
+
+    let startDate = new Date(departureDate);
+    let endDate = new Date(returnDate);
+    let tripDuration = ("days in a trip: " + parseInt((endDate.getTime()-startDate.getTime())/(24*3600*1000)));
+    console.log(tripDuration)
+    
+      
+      await postData("http://localhost:3100/Client", {
       city: city,
       departure: departureDate,
       returnDate: returnDate,
+      tripDuration: tripDuration
     });
     
 
@@ -29,13 +39,7 @@
     console.log(trip);
     updateUI(); }
     else {console.log ("Invalid iput, try again!")}
-    //Set up dates duration
 
-    let startDate = new Date(departureDate);
-    let endDate = new Date(returnDate);
-    let tripDuration = ("Days in a trip: " + parseInt((endDate.getTime()-startDate.getTime())/(24*3600*1000)));
-    console.log(tripDuration)
-    return tripDuration;
   } 
 
  async function postData(url, data = {}) {
@@ -79,7 +83,7 @@ async function updateUI() {
   pic.src = uData.image;
   weather.innerHTML = `Current temperature is: ${uData.temp}°, ${uData.description.toLowerCase()}`;
   cityoutput.innerHTML = `${uData.destination}, ${uData.countryName}`;
-  outputdates.innerHTML = `Trip dates: ${uData.start} to ${uData.end}, ${tripDuration}`;
+  outputdates.innerHTML = `Trip dates: ${uData.start} to ${uData.end}, ${uData.tripDuration}`;
 
 }
 
