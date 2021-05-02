@@ -11,3 +11,5 @@ import { actionS,
     updateUiPredicted, 
    };
    
+
+     import './styles/style.scss';
