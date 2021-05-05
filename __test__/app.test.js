@@ -1,6 +1,8 @@
-const actionS = require('../src/client/js/app');
+const updateUIcurrent = require ('../src/client/js/app.js');
 
-
-    test('Check that the actionS function is not undefined', () => {
-        expect(actionS).toBeDefined();
+describe('Get function', () => {
+    
+    test('Check that the function is not undefined', () => {
+        expect(updateUIcurrent).toBeDefined();
     });
+});
