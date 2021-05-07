@@ -1,15 +1,25 @@
-import { actionS, 
-    postData, 
-    callServer,  
-    updateUIcurrent,  
-   updateUiPredicted } from './js/app';
-
-   export { actionS, 
-    postData, 
-    callServer, 
-    updateUIcurrent, 
-    updateUiPredicted, 
-   };
+import { 
    
+      callServer,
+      updateUIcurrent,
+      updateUiPredicted
+    
+     } from './js/app';
 
-     import './styles/style.scss';
+
+export { 
+  
+    callServer,
+    updateUIcurrent,
+    updateUiPredicted
+  }
+  
+   
+   import './styles/style.scss';
+   import './styles/secondary-style.scss';
+   import './styles/laptop-style.scss';
+   import './styles/style-desktop.scss';
+   import './styles/tablet-style.scss';
+    import img from './media/Paris.jpg';
+
+   

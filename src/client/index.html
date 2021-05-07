@@ -13,12 +13,15 @@
             <div id ="picture_block">
                <img src = "" id="pic"/>
             </div>
-            <div id ="outputinfo">
-               <div id="weather"></div>
+            <!--output-->
+            <div class ="outputinfo">
                <div id="cityoutput"></div>
                <div id="outputdates"></div>
+               <div id="weather"></div>
+              
             </div>
          </section>
+         <!--input-->
          <section id = "input-data">
             <form class = "form">
                <div class = "inputinfo">
@@ -37,7 +40,7 @@
                </div>
                <div class = "btn">
                   <div>
-                     <input type="submit" value="Submit" id="sub-btn" onclick = "return Fox.actionS(event)" onsubmit="return actionS(event)">
+                     <input type="submit" value="Submit" id="sub-btn">
                   </div>
                </div>
          </section>
@@ -46,5 +49,15 @@
       <footer>
          <p>2021 © Trip-app</p>
       </footer>
+      <script>
+          //Check that service workers are supported
+         if ('serviceWorker' in navigator) {
+             // Use the window load event to keep the page load performant
+             window.addEventListener('load', () => {
+                 navigator.serviceWorker.register('/service-worker.js');
+             });
+         }
+        </script>
    </body>
+   
 </html>
