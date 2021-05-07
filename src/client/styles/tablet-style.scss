@@ -1,0 +1,26 @@
+@media only screen and (min-width:320px) and (max-width:1199px){
+
+    #output-data {
+
+        display: block;
+        width:90%;
+        margin: auto;
+        text-align: center;
+        
+    }
+
+    #cityoutput, #outputdates, #weather {
+        font-size:36px;
+        width:100%;
+        margin: auto;
+        text-align: center;
+    }
+    
+        #picture_block {
+
+            display: block;
+            margin: auto;
+
+        }
+
+}

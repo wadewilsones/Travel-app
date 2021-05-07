@@ -1,0 +1,24 @@
+@media only screen and (min-width: 1720px) and (max-width:1920px){
+#output-data {
+
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    margin:auto;
+    margin-bottom: 5%;
+    width:60%;
+    padding-bottom: 2%;
+    
+    
+}
+
+
+
+#cityoutput, #outputdates, #weather {
+
+    font-size:48px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+}
