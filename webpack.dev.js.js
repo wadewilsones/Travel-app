@@ -2,8 +2,10 @@ const path = require ('path');
 const webpack = require ('webpack');
 const htmlWebPackPlugin = require('html-webpack-plugin');
 const { library } = require('webpack');
+
+
 module.exports = {
-    entry: './src/client/index.js',
+    entry: ['./src/client/index.js'],
     output: {
         libraryTarget: 'var',
         library: 'Fox',
@@ -20,9 +22,29 @@ module.exports = {
         // add scss loader
         {
             test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader']
-        }  
+            use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader']
+        },
+        
+        {
+            test: /\.(png|jpg|gif)$/i,
+            use: [
+              {
+                loader: 'url-loader',
+                options: {
+                  limit: 8192,
+                },
+              },
+            ],
+          },
 
+          {
+            test: /\.(png|jpe?g|gif)$/i,
+            use: [
+              {
+                loader: 'file-loader',
+              },
+            ],
+          },
         ], 
     },
         plugins: [
