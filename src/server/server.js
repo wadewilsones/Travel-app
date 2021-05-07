@@ -4,13 +4,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fetch = require('node-fetch');
 const { response } = require('express');
-
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.use (bodyParser.urlencoded ({extended:false}));
 app.use (bodyParser.json());
 app.use (cors());
-app.use (express.static('../../src/client'));
-
+app.use(express.static('dist'));
 
 //Set up a server
 
@@ -20,25 +20,28 @@ function listening () {
     console.log ('Server is running on localhost:' + port)
 }
 
+// Server Test 
+app.get('/test', function(req, res) {
+    res.json({
+      status : 200
+    })
+  })
 
 //Set up API links
 
 const baseGeoUrl = 'http://api.geonames.org/searchJSON?';
-const username = 'wadewilso'; // hide later
+const username = process.env.GeoKey;
 const geoP = "&maxRows=1";
 
 
-const apiK = '5a6a216b84a546b88c3ee16e59c33dd0';// hide later
+const apiK =  process.env.weatherKey;
 
 const basePixabayURL = "https://pixabay.com/api/";
-const apiPix = "20411781-12da6a01e91bbdaac4fb1f75f"; // hide later
+const apiPix =  process.env.PixApiy;
 
-
-//Set up get/post routes
-
-//app.get ("/", function getData(req,res) {
- //   res.send ('dist/index.html');
-//})
+app.get('/', function (req, res) {
+    res.send('dist/index.html');
+});
 
 // Creation of a project's information holder
 let tripData = {};
@@ -137,3 +140,5 @@ function getFullData(req,res) {
     console.log (tripData);
     res.send (tripData);
 }
+
+module.exports = app;
