@@ -10,13 +10,14 @@ body {
     margin:0;
     padding:0;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("../media/Paris.jpg");
+    background-image: url('../media/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     font-family: $main-font;
     color:white;
     display: flex;
   flex-direction: column;
+
 }
 main { flex: 1 0 auto;}
 h1 {

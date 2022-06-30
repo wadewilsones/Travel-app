@@ -2,15 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser'); 
 const cors = require('cors');
-const fetch = require('node-fetch');
-const { response } = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
 
 app.use (bodyParser.urlencoded ({extended:false}));
 app.use (bodyParser.json());
 app.use (cors());
-app.use(express.static('dist'));
+app.use('/', express.static('../../dist'));
 
 //Set up a server
 

@@ -20,6 +20,7 @@ export {
    import './styles/laptop-style.scss';
    import './styles/style-desktop.scss';
    import './styles/tablet-style.scss';
-    import img from './media/Paris.jpg';
+
+
 
    
