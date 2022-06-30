@@ -1,8 +1,4 @@
-const path = require ('path');
-const webpack = require ('webpack');
 const htmlWebPackPlugin = require('html-webpack-plugin');
-const { library } = require('webpack');
-
 
 module.exports = {
     entry: ['./src/client/index.js'],
@@ -22,7 +18,7 @@ module.exports = {
         // add scss loader
         {
             test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader']
+            use: ['style-loader', 'css-loader', 'sass-loader', 'url-loader']
         },
         
         {
