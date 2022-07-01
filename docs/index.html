@@ -1,7 +1,0 @@
-<!doctype html><html><head><title>Travel App</title><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue"><script defer="defer" src="main.js"></script><link href="main.css" rel="stylesheet"></head><body><main><h1>Your Travel Planner</h1><h3>Get a forecast for your trip</h3><section id="output-data"><div id="picture_block"><img src="" id="pic"/></div><div class="outputinfo"><div id="cityoutput"></div><div id="outputdates"></div><div id="weather"></div></div></section><section id="input-data"><form class="form"><div class="inputinfo"><div class="info"><label>Location</label><br><input placeholder="Paris..." id="cityinput"><br></div><div class="info"><label>Departure</label><br><input type="date" id="departureDate" placeholder="dd/mm/yy"><br></div><div class="info"><label>Return</label><br><input type="date" id="return" placeholder="dd/mm/yy"><br></div></div><div class="btn"><div><input type="submit" value="Submit" id="sub-btn"></div></div></form></section></main><footer><p>2021 © Trip-app</p></footer><script>//Check that service workers are supported
-         if ('serviceWorker' in navigator) {
-             // Use the window load event to keep the page load performant
-             window.addEventListener('load', () => {
-                 navigator.serviceWorker.register('/service-worker.js');
-             });
-         }</script></body></html>
