@@ -32,7 +32,6 @@ const baseGeoUrl = 'http://api.geonames.org/searchJSON?';
 const username = process.env.GeoKey;
 const geoP = "&maxRows=1";
 
-
 const apiK =  process.env.weatherKey;
 
 const basePixabayURL = "https://pixabay.com/api/";

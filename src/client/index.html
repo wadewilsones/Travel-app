@@ -6,45 +6,54 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue">
    </head>
    <body>
+      <header>
+         <p>TravelGo</p>
+         <p>Your Travel Planner</p>
+      </header>
       <main>
-         <h1>Your Travel Planner</h1>
          <h3>Get a forecast for your trip</h3>
          <section id = "output-data">
-            <div id ="picture_block">
+            <!--
+                           <div id ="picture_block">
                <img src = "" id="pic"/>
             </div>
-            <!--output-->
             <div class ="outputinfo">
                <div id="cityoutput"></div>
                <div id="outputdates"></div>
                <div id="weather"></div>
               
             </div>
+            -->
+
          </section>
          <!--input-->
          <section id = "input-data">
             <form class = "form">
-               <div class = "inputinfo">
+               
                   <div class = "info">
                      <label>Location</label><br>
                      <input type="text" placeholder="Paris..." id="cityinput"><br>
                   </div>
+
                   <div class = "info">
                      <label>Departure</label><br>
                      <input type="date" id="departureDate" placeholder="dd/mm/yy"><br>
                   </div>
+
                   <div class = "info">
                      <label>Return</label><br>
                      <input type="date" id="return" placeholder="dd/mm/yy"><br>
                   </div>
+                  
+                  <div class = "btn">
+                     <div>
+                        <input type="submit" value="Submit" id="sub-btn">
+                     </div>
                </div>
-               <div class = "btn">
-                  <div>
-                     <input type="submit" value="Submit" id="sub-btn">
-                  </div>
                </div>
+            </form>   
          </section>
-         </form>
+
       </main>
       <footer>
          <p>2021 © Trip-app</p>

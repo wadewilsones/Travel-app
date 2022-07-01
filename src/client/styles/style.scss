@@ -6,59 +6,83 @@
 $main-font: "Roboto";
 $second-font: "Roboto";
 
-body {
+$background-main: #0a014f;
+$second-color:#f72585;
+$third-color:#a81859;
+
+
+*{
     margin:0;
     padding:0;
-    min-height: 100vh;
+    border:0;
+    font-family: $main-font;
+}
+
+body{
     background-image: url('../media/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: $main-font;
+}
+
+header{
+    background-color: $background-main;
+    padding: 20px 0;
+    margin-bottom: 2em;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     color:white;
-    display: flex;
-  flex-direction: column;
+    line-height: 1.2;
+}
+
+header p:last-child {
+
+    padding-left: 3em;
+    font-size: 1em;
+    width:70%;
+    margin: auto;
+}
+
+header p:first-child {
+    font-size:1.4em;
+    width:70%;
+    margin: auto;
+    padding-left: 2em;
 
 }
+
+
 main { flex: 1 0 auto;}
-h1 {
-    text-align: center;
-    font-size: 96px;
-    margin-top: 10%;
-    margin-bottom: 0px;
-}
 
 h3 {
     text-align: center;
-    font-size: 24px;
-    margin: 0px;
-    margin-bottom: 5%;
+    font-size: 2em;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    color:white;
     font-weight: 400;
 }
 
 .form {
 
+    background-color: $background-main;
     display: flex;
-    text-align: center;
-    justify-content: space-around;
     align-items: center;
-    width:940px;
-    margin: auto;
-    background-color: rgba(196, 196, 196, 0.41);
-    backdrop-filter: blur(4px);
-    border-radius: 5px;
-    height: 155px;
-
+    justify-content: center;
+    max-width: 1000px;
+    width:90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    color:white;
+    padding: 3em 2em;
 }
 
-.inputinfo {
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width:60%;
-    margin-left: 8%;
-    label {
-        font-size:12px;
+#output-data{
+    display: none;
+}
+form {
+   label {
+        font-size:1em;
         font-family:$second-font;
         display: block;
         text-align: left;
@@ -72,15 +96,14 @@ h3 {
 }
 
 
-
 input {
 
     font-size:12px;
     font-family:$second-font;
     padding-left: 10px;
+    margin-right: 40px;
     margin-top: 0px;
-    border:none;
-
+    align-self: center;
 }
 
 #cityinput {
@@ -107,37 +130,34 @@ input {
 }
 
 
-.btn{
-    margin-left: 10%;
-    padding-top: 1.5%;
-    margin-right: 8%;
-}
-
 #sub-btn {
-        background-color: #48C6B9;
+        background-color: $second-color;
         color:white;
         font-family: Roboto;
         font-size: 18px;
         border: none;
         border-radius: 5px;
-        width: 122px;
-        height: 41px;
         margin-top:5%;
         cursor: pointer;
+        padding: 10px 50px;
         text-align: center;
+        margin-left: 30px;
+        margin-top: 20px;
     }
         #sub-btn:hover
-        {background-color:#48a9c6;
+        {background-color:$third-color;
         color:#ffffff;}
        
 
 
 footer {
     text-align: center;
-    height: 70px;
-    background-color: black;
+    padding: 2em 0;
+    background-color: $background-main;
    color:white;
     width:100%;
+    position: absolute;
+    bottom: 0;
     flex-shrink: 0;
     margin-top: 20px;
     p{
