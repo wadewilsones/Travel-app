@@ -18,7 +18,14 @@ module.exports = {
         // add scss loader
         {
             test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader', 'url-loader']
+            use: ['style-loader', 'css-loader', 'resolve-url-loader', 
+
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true, 
+              }
+            }]
         },
         
         {
@@ -37,7 +44,7 @@ module.exports = {
             test: /\.(png|jpe?g|gif)$/i,
             use: [
               {
-                loader: 'file-loader',
+                loader: 'file-loader'
               },
             ],
           },
