@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const bodyParser = require('body-parser'); 
-const cors = require('cors');
-const dotenv = require('dotenv');
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import dotenv from 'dotenv'
+import fetch from 'node-fetch';
 dotenv.config();
 
 app.use (bodyParser.urlencoded ({extended:false}));
@@ -139,4 +140,4 @@ function getFullData(req,res) {
     res.send (tripData);
 }
 
-module.exports = app;
+export default app;
