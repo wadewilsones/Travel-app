@@ -18,7 +18,12 @@ module.exports = {
         // add scss loader
         {
             test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'resolve-url-loader', 
+            use: ['style-loader', {
+              loader: 'css-loader',
+              options: {
+                esModule: false
+              }
+            }, 'resolve-url-loader', 
 
             {
               loader: 'sass-loader',
@@ -30,24 +35,10 @@ module.exports = {
         
         {
             test: /\.(png|jpg|gif)$/i,
-            use: [
-              {
-                loader: 'url-loader',
-                options: {
-                  limit: 8192,
-                },
-              },
-            ],
+            type: 'asset/resource'
           },
 
-          {
-            test: /\.(png|jpe?g|gif)$/i,
-            use: [
-              {
-                loader: 'file-loader'
-              },
-            ],
-          },
+
         ], 
     },
         plugins: [
